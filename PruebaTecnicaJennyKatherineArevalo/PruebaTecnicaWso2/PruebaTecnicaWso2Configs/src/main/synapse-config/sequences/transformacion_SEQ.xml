@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="transformacion_SEQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <filter regex="false" source="boolean(//*[local-name()='root'])">
+        <then>
+            <payloadFactory description="Build JSON payload from XML request" media-type="json">
+                <format>
+					{
+					"error":"mensaje sin request"
+					}
+				</format>
+                <args/>
+            </payloadFactory>
+        </then>
+        <else>
+            <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;dd/MM/yyyy HH:mm:ss&quot;)" name="fechasistema" scope="default" type="STRING"/>
+            <payloadFactory description="Build JSON payload from XML request" media-type="json">
+                <format>
+					{
+					"root": {
+					"adjunto": [{
+					"contenido": "$1",
+					"extension": ".$2",
+					"nombre": "$3",
+					"ruta": ""
+					}],
+					"estadoRadicacion": "$4",
+					"persona": {
+					"contrato": "$5",
+					"edad": "$6",
+					"familia": "$7",
+					"genero": "$8",
+					"nombre": "$9",
+					"numeroUsuario": "$10",
+					"plan": {
+					"Codigo": "$11"
+					},
+					"producto": {
+					"Codigo": "$12"
+					},
+					"tidentificacion": {
+					"numIdentificacion": "$13",
+					"tipoIdentificacion": "$14"
+					}
+					}
+					},
+					"fechaSistema": "$15"
+					}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="//root/adjunto/element/contenido"/>
+                    <arg evaluator="xml" expression="//root/adjunto/element/extension"/>
+                    <arg evaluator="xml" expression="//root/adjunto/element/nombre"/>
+                    <arg evaluator="xml" expression="//root/estadoRadicacion"/>
+                    <arg evaluator="xml" expression="//root/persona/contrato"/>
+                    <arg evaluator="xml" expression="//root/persona/edad"/>
+                    <arg evaluator="xml" expression="//root/persona/familia"/>
+                    <arg evaluator="xml" expression="//root/persona/genero"/>
+                    <arg evaluator="xml" expression="//root/persona/nombre"/>
+                    <arg evaluator="xml" expression="//root/persona/numeroUsuario"/>
+                    <arg evaluator="xml" expression="//root/persona/plan/Codigo"/>
+                    <arg evaluator="xml" expression="//root/persona/producto/Codigo"/>
+                    <arg evaluator="xml" expression="//root/persona/tidentificacion/numIdentificacion"/>
+                    <arg evaluator="xml" expression="//root/persona/tidentificacion/tipoIdentificacion"/>
+                    <arg evaluator="xml" expression="get-property('fechasistema')"/>
+                </args>
+            </payloadFactory>
+        </else>
+    </filter>
+</sequence>

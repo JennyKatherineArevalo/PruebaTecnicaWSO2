@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="ApiValidacionTest" groupId="com.indracompany.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/ApiValidacionTest.xml</file>
+    </artifact>
+    <artifact name="MainTest_SEQ" groupId="com.indracompany.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/MainTest_SEQ.xml</file>
+    </artifact>
+    <artifact name="transformacion_SEQ" groupId="com.indracompany.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/transformacion_SEQ.xml</file>
+    </artifact>
+</artifacts>

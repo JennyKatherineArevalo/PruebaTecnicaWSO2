@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/ApiTest" name="ApiValidacionTest" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" url-mapping="/transformacion">
+        <inSequence>
+            <sequence key="MainTest_SEQ"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
